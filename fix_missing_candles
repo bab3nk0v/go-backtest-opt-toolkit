@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+import pandas as pd
+import sys
+ohlcv_df = pd.read_csv(sys.argv[1], header=None)
+ohlcv_df.columns = ['Time', 'Open', 'High', 'Low', 'Close', 'Volume']
+ohlcv_df['Time'] = pd.to_datetime(ohlcv_df.Time, unit='ms')
+ohlcv_df = ohlcv_df.set_index('Time')
+res = ohlcv_df.asfreq(sys.argv[3])
+cols = ['Open','High','Low', 'Close'] # list of columns to update
+res[cols] = res[cols].fillna(method='ffill')
+res.update(res['Volume'].fillna(0))
+res = res.reset_index()
+res['Time'] = res.reset_index().Time.astype(int)//10**9
+res.to_csv(sys.argv[2], header=None, index=False)
+

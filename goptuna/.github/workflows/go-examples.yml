@@ -1,0 +1,37 @@
+name: Run examples
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/go-examples.yml'
+      - '_examples/build.sh'
+      - '**.go'
+jobs:
+  examples:
+    name: Run goptuna examples on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        go: [1.15, 1.16]
+
+    steps:
+    - name: Set up Go ${{ matrix.go }}
+      uses: actions/setup-go@v2
+      with:
+        go-version: ${{ matrix.go }}
+      id: go
+
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@master
+
+    - name: Running go tests
+      env:
+        GO111MODULE: auto
+      run: |
+        _examples/build.sh
+        ./bin/cmaes
+        ./bin/sobol
+        ./bin/cmaes_blackhole
+        ./bin/simple_tpe
+        ./bin/concurrency
+        ./bin/trialnotify
