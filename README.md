@@ -1,3 +1,8 @@
+# Intro
+
+This research project has been developed during my master's thesis preparation.
+Includes all the code and data needed to run your own experiments.
+
 # Quickstart
 
 ## Database
