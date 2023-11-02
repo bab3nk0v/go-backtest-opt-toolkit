@@ -1,17 +1,22 @@
-# Intro
+# 🚀 Welcome to the High-Performance Trading Strategy Optimization Toolkit
 
-This research project has been developed during my master's thesis preparation.
-Includes all the code and data needed to run your own experiments.
+## Introduction 📘
 
-# Quickstart
+Welcome, fellow data enthusiast! You've stumbled upon a repository that served as a cornerstone for my academic pursuit during my master's thesis. This project isn't just a collection of code and data; it's a testament to the fusion of cutting-edge optimization techniques and high-performance computing in Go. Whether you're an aspiring quantitative researcher, a data science maven, or simply a curious mind, you'll find this toolkit to be a robust playground for running extensive trading strategy experiments.
 
-## Database
-first of all we need mysql db to store intermediate results\
-the simplest way is to set it up via docker:
+**Disclaimer:** While this project has been crafted with meticulous attention to detail, it is currently not actively maintained and was developed primarily for educational purposes.
+
+## Getting Started 🚦
+
+### Prerequisites: Setting up the Database 🛢️
+
+Our journey begins with setting up a MySQL database to store the fruits of our optimization labor. But fear not, for Docker comes to the rescue with a swift setup:
 
 ```console
 $ docker pull mysql:8.0
 ```
+
+Proceed by conjuring up your SQL instance with this incantation:
 
 ```console
 $ docker run \
@@ -26,11 +31,9 @@ $ docker run \
 mysql:8.0
 ```
 
-## Building
+### Compilation Cruise: Install & Build 🛠️
 
-### Install ta-lib
-
-#### Linux
+#### Technical Alchemy on Linux
 
 ```console
 $ wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz
@@ -41,15 +44,15 @@ $ make
 $ sudo make install
 ```
 
-#### MacOS
+#### For the Mac OS Magicians
 
 ```console
 $ brew install ta-lib
 ```
 
-### Compile optimizer
+#### Conjure the Optimizer
 
-To compile we need golang compiler of version at least 1.15
+Your quest for compiling this project begins with the mighty Golang compiler (v1.15+):
 
 ```console
 $ git clone https://github.com/ababenkov/trade-optimizer
@@ -57,46 +60,26 @@ $ cd trade-optimizer
 $ go build .
 ```
 
-Go build outputs trade-optimizer binary for your platform
+Voilà! The `trade-optimizer` binary tailored for your platform is ready to unveil its magic.
 
-### Run!
+### Launch Instructions 🚀
 
-Running the binary will run the optimizer with default settings
+Let the binary dance to the default tune:
+
 ```console
 $ ./trade-optimizer
 ```
 
-Custom options can be also specified
+Or, conduct the performance with your own symphony of options:
 
 ```console
  $ ./trade-optimizer --help
-Usage of ./trade-optimizer:
-  -dataPath string
-        path to OHLCV dataset (default "datasets/XMR_1m.csv")
-  -dbHost string
-        db host (default "localhost")
-  -dbLogin string
-        db username (default "goptuna")
-  -dbName string
-        database name (default "goptuna")
-  -dbPass string
-        db pass (default "password")
-  -dbPort int
-        db port (default 3306)
-  -fee float
-        fee
-  -nItersNoChange int
-        number of iterations without improvement to stop (default 3000)
-  -pairname string
-        pair name (default "XMR_USD")
-  -resultFolder string
-        where to dump optimization results (default "opt_results")
-  -timeInMillseconds
-        true=time in milliseconds false=time in seconds (default true)
-  -tradeSize float
-        trade size (default 100)
-
 ```
-The result of running the optimizer is a json file with 
-parameters and trades. The analysis is done in analysis.ipynb
 
+### The Grand Finale: Results 🎉
+
+Executing the optimizer culminates in a JSON opus, detailing the parameters and trades of your strategic masterpiece. All of which are ready for your analytical concerto in `analysis.ipynb`.
+
+---
+
+Embark on this journey to explore the symphony of algorithms and performance, and may your data be ever in your favor. Enjoy, and may the odds bring forth strategies of great prosperity!
